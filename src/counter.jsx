@@ -2,7 +2,7 @@ import React from "react";
 
 function Counter({ value, onChange }) {
   const increment = () => {
-    onChange((prevCount) => (prevCount < 5 ? prevCount + 1 : prevCount));
+    onChange((prevCount) => (prevCount < 7 ? prevCount + 1 : prevCount));
   };
 
   const decrement = () => {
