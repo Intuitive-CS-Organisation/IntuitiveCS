@@ -24,20 +24,6 @@ const Home = () => {
           </span>
         </div>
       </div>
-
-      {/* Footer Section */}
-      <footer id="footer-container">
-        <div className="footer-links">
-          <Link to="/contact">Contact Us</Link> | <Link to="/about">About</Link>{" "}
-          | <Link to="/feedback">Suggestions/Feedback</Link>
-        </div>
-        <p className="footer-credits">
-          Made by Parsa Ersunkhani, Mahin Sindhwani, Shajan Alam
-        </p>
-        <p className="footer-copyright">
-          &copy; {new Date().getFullYear()} - CC
-        </p>
-      </footer>
     </>
   );
 };

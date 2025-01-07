@@ -78,7 +78,7 @@ const App = () => {
       return positions;
     };
 
-    const nodeLabels = ["Parsa", "Mahin", "Shajan", "Steph", "Antonio"];
+    const nodeLabels = ["Parsa", "Mahin", "Shajan", "Steph", "Antonina"];
 
     const newNodes = Array.from({ length: nodeCount }, (_, i) => {
       const positions = calculatePositions(nodeCount);
