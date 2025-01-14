@@ -171,6 +171,7 @@ html, body {
   border: none;
   box-shadow: none;
   padding: 0;
+  pointer-events: all;
 }
 
 .react-flow__node {
@@ -385,6 +386,7 @@ html, body {
   border: 2px solid #173264;
   text-align: center;
   position: relative;
+  cursor: pointer;
 }
 
 .customHandle {

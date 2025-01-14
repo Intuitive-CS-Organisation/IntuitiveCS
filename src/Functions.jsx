@@ -6,23 +6,19 @@ import {
   applyEdgeChanges,
   addEdge,
   Handle,
+  MarkerType,
 } from "@xyflow/react";
 
-import FloatingEdge from "./FloatingEdge"; // Ensure consistency with App.jsx
-import CustomNode from "./CustomNode"; // Use the same CustomNode component
-import CustomConnectionLine from "./CustomConnectionLine"; // Use CustomConnectionLine for edge connections
+import FloatingEdge from "./FloatingEdge";
+import CustomNode from "./CustomNode";
+import CustomConnectionLine from "./CustomConnectionLine";
 
-import { analyzeFunctionTypes } from "./FunctionsLogic"; // Import logic for function type analysis
+import { analyzeFunctionTypes } from "./FunctionsLogic";
 
 import "./index.css";
-// import { Handle } from "react-flow-renderer";
 
 const edgeTypes = {
-  floating: FloatingEdge, // Match the App file's edge styling
-};
-
-const nodeTypes = {
-  custom: CustomNode, // Match the App file's node styling
+  floating: FloatingEdge,
 };
 
 const rfStyle = {
@@ -30,8 +26,12 @@ const rfStyle = {
 };
 
 const defaultEdgeOptions = {
-  type: "floating", // Ensure the floating edge is default
+  type: "floating",
   animated: true,
+  markerEnd: {
+    type: MarkerType.ArrowClosed,
+    color: "#293a42",
+  },
   style: { stroke: "#293a42", strokeWidth: 3 },
 };
 
@@ -55,6 +55,7 @@ const initialNodes = [
     position: { x: 50, y: 20 },
     parentId: "A",
     extent: "parent",
+    selectable: true,
     draggable: false,
     className: "group-a-node",
   },
@@ -65,6 +66,7 @@ const initialNodes = [
     position: { x: 50, y: 120 },
     parentId: "A",
     extent: "parent",
+    selectable: true,
     draggable: false,
     className: "group-a-node",
   },
@@ -75,6 +77,7 @@ const initialNodes = [
     position: { x: 50, y: 220 },
     parentId: "A",
     extent: "parent",
+    selectable: true,
     draggable: false,
     className: "group-a-node",
   },
@@ -92,6 +95,7 @@ const initialNodes = [
     position: { x: 50, y: 20 },
     parentId: "B",
     extent: "parent",
+    selectable: true,
     draggable: false,
     className: "group-b-node",
   },
@@ -102,6 +106,7 @@ const initialNodes = [
     position: { x: 50, y: 120 },
     parentId: "B",
     extent: "parent",
+    selectable: true,
     draggable: false,
     className: "group-b-node",
   },
@@ -112,6 +117,7 @@ const initialNodes = [
     position: { x: 50, y: 220 },
     parentId: "B",
     extent: "parent",
+    selectable: true,
     draggable: false,
     className: "group-b-node",
   },
@@ -121,6 +127,9 @@ const Functions = () => {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState([]);
   const [functionType, setFunctionType] = useState("Unknown");
+  const [connections, setConnections] = useState("{}");
+  const [functionName, setFunctionName] = useState("FunctionName");
+  const [isEditing, setIsEditing] = useState(false);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -138,9 +147,9 @@ const Functions = () => {
         addEdge(
           {
             ...connection,
-            type: "floating", // Ensure the custom edge type is used
+            type: "floating",
             animated: true,
-            style: { stroke: "#293a42", strokeWidth: 3 }, // Match App.jsx
+            style: { stroke: "#293a42", strokeWidth: 3 },
           },
           eds
         )
@@ -149,8 +158,36 @@ const Functions = () => {
   );
 
   useEffect(() => {
-    setFunctionType(analyzeFunctionTypes(nodes, edges)); // Analyze the function type dynamically
+    if (edges.length === 0) {
+      setConnections("{}");
+    } else {
+      const connectionList = edges.map((edge) => {
+        const sourceNode = nodes.find((n) => n.id === edge.source);
+        const targetNode = nodes.find((n) => n.id === edge.target);
+        const sourceLabel = sourceNode?.data.label || edge.source;
+        const targetLabel = targetNode?.data.label || edge.target;
+        return `(${sourceLabel},${targetLabel})`;
+      });
+      setConnections(`{${connectionList.join(", ")}}`);
+    }
+  }, [edges, nodes]);
+
+  const handleDoubleClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleBlur = (e) => {
+    setFunctionName(e.target.value);
+    setIsEditing(false);
+  };
+
+  useEffect(() => {
+    setFunctionType(analyzeFunctionTypes(nodes, edges));
   }, [nodes, edges]);
+
+  const nodeTypes = {
+    custom: (props) => <CustomNode {...props} setNodes={setNodes} />,
+  };
 
   return (
     <div id="layout">
@@ -165,9 +202,11 @@ const Functions = () => {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          zoomOnScroll={false}
+          preventScrolling={false}
           fitView
           fitViewOptions={{
-            padding: 0.5, // Adjust padding to control zoom level
+            padding: 0.5,
           }}
           edgeTypes={edgeTypes}
           nodeTypes={nodeTypes}
@@ -178,6 +217,23 @@ const Functions = () => {
         >
           <Background />
         </ReactFlow>
+        <div id="connections-info">
+          <h3>
+            {isEditing ? (
+              <input
+                type="text"
+                defaultValue={functionName}
+                onBlur={handleBlur}
+                autoFocus
+              />
+            ) : (
+              <span onDoubleClick={handleDoubleClick}>
+                <center>{functionName}</center>
+              </span>
+            )}
+          </h3>
+          <p>{connections}</p>
+        </div>
       </div>
     </div>
   );

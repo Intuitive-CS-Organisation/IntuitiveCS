@@ -15,7 +15,7 @@ import FloatingEdge from "./FloatingEdge";
 import CustomConnectionLine from "./CustomConnectionLine";
 import SelfConnectingEdge from "./SelfConnectingEdge";
 
-import Counter from "./counter"; // Import Counter component
+import Counter from "./counter";
 import {
   isReflexive,
   isAntiReflexive,
@@ -52,8 +52,9 @@ const App = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [connections, setConnections] = useState("{}");
+  const [relationName, setRelationName] = useState("hasBeenTaughtBy");
+  const [isEditing, setIsEditing] = useState(false);
 
-  // Define nodeTypes within the scope of App to access setNodes
   const nodeTypes = {
     custom: (props) => <CustomNode {...props} setNodes={setNodes} />,
   };
@@ -91,7 +92,22 @@ const App = () => {
     });
 
     setNodes(newNodes);
-    setEdges([]);
+    const newEdges = [];
+    if (nodeCount > 3) {
+      newEdges.push(
+        { id: "e1-4", source: "1", target: "4", type: "floating" },
+        { id: "e2-4", source: "2", target: "4", type: "floating" },
+        { id: "e3-4", source: "3", target: "4", type: "floating" }
+      );
+    }
+    if (nodeCount >= 5) {
+      newEdges.push(
+        { id: "e1-5", source: "1", target: "5", type: "floating" },
+        { id: "e5-5", source: "5", target: "5", type: "selfLoop" },
+        { id: "e4-4", source: "4", target: "4", type: "selfLoop" }
+      );
+    }
+    setEdges(newEdges);
   }, [nodeCount, setNodes, setEdges]);
 
   const onConnect = useCallback(
@@ -134,6 +150,15 @@ const App = () => {
     setRelations(relations);
   }, [connections, nodes, setRelations]);
 
+  const handleDoubleClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleBlur = (e) => {
+    setRelationName(e.target.value);
+    setIsEditing(false);
+  };
+
   return (
     <div id="layout">
       {/* Sidebar */}
@@ -161,6 +186,8 @@ const App = () => {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          zoomOnScroll={false}
+          preventScrolling={false}
           fitView
           fitViewOptions={{
             padding: 0.3, // Adjust padding to control zoom level
@@ -175,7 +202,20 @@ const App = () => {
           <Background />
         </ReactFlow>
         <div id="connections-info">
-          <h3>Current Connections:</h3>
+          <h3>
+            {isEditing ? (
+              <input
+                type="text"
+                defaultValue={relationName}
+                onBlur={handleBlur}
+                autoFocus
+              />
+            ) : (
+              <span onDoubleClick={handleDoubleClick}>
+                <center>{relationName}</center>
+              </span>
+            )}
+          </h3>
           <p>{connections}</p>
         </div>
       </div>
