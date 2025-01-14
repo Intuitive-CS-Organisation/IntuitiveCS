@@ -2,6 +2,7 @@ import React from "react";
 import Functions from "./Functions";
 import App from "./App";
 import Dropdown from "./Dropdown";
+import textContent from "./textContent";
 
 const FPR = () => {
   return (
@@ -10,11 +11,7 @@ const FPR = () => {
         <center>Functions/Predicates/Relations</center>
       </h1>
       <p>
-        <center>
-          Relations are types of predicates, and predicates are types of
-          functions. To read more about understanding each concept, press on the
-          "down arrow" next to each topic's visualizer.
-        </center>
+        <center>{textContent}</center>
       </p>
       <div className="section">
         <h3>
