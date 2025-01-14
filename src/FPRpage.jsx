@@ -5,7 +5,7 @@ import Dropdown from "./Dropdown";
 
 const FPR = () => {
   return (
-    <div>
+    <div id>
       <h1>
         <center>Functions/Predicates/Relations</center>
       </h1>
