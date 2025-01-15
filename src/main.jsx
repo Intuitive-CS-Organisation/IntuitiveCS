@@ -8,6 +8,7 @@ import Functions from "./Functions.jsx";
 import HamburgerMenu from "./HamburgerMenu.jsx";
 import FPR from "./FPRpage.jsx";
 import Contact from "./Contact.jsx"; // <--- import the new file
+import About from "./About.jsx"; // Import the About component
 
 function Main() {
   return (
@@ -20,6 +21,7 @@ function Main() {
         <Route path="/functions" element={<Functions />} /> */}
         {/* The new contact route */}
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} /> {/* Add this line */}
       </Routes>
     </Router>
   );
