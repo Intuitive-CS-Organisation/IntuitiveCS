@@ -163,7 +163,10 @@ const App = () => {
     <div id="layout">
       {/* Sidebar */}
       <div id="sidebar">
-        <Counter value={nodeCount} onChange={setNodeCount} />
+        <div className="counter-section">
+          <p>Nodes:</p>
+          <Counter value={nodeCount} onChange={setNodeCount} />
+        </div>
         <div id="node-info">
           <h3>Relation Properties:</h3>
           <p>Reflexive: {relations.reflexive ? "Yes" : "No"}</p>

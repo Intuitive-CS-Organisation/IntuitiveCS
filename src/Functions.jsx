@@ -265,11 +265,13 @@ const Functions = () => {
           <p>Codomain:</p>
           <Counter value={codomainCount} onChange={setCodomainCount} />
         </div>
-        <h3>Function Properties:</h3>
-        <p>Function: {functionProperties.isFunction ? "✔️" : "❌"}</p>
-        <p>Injective: {functionProperties.isInjective ? "Yes" : "No"}</p>
-        <p>Surjective: {functionProperties.isSurjective ? "Yes" : "No"}</p>
-        <p>Bijective: {functionProperties.isBijective ? "Yes" : "No"}</p>
+        <div id="node-info">
+          <h3>Function Properties:</h3>
+          <p>Function: {functionProperties.isFunction ? "✔️" : "❌"}</p>
+          <p>Injective: {functionProperties.isInjective ? "Yes" : "No"}</p>
+          <p>Surjective: {functionProperties.isSurjective ? "Yes" : "No"}</p>
+          <p>Bijective: {functionProperties.isBijective ? "Yes" : "No"}</p>
+        </div>
       </div>
       <div id="main-area">
         <ReactFlow

@@ -10,10 +10,14 @@ function Counter({ value, onChange }) {
   };
 
   return (
-    <div className="counter">
-      <input value={value} id="count" readOnly />
-      <button onClick={decrement}>-</button>
-      <button onClick={increment}>+</button>
+    <div className="counter-container">
+      <button className="counter-button decrement" onClick={decrement}>
+        -
+      </button>
+      <input value={value} id="count" readOnly className="counter-display" />
+      <button className="counter-button increment" onClick={increment}>
+        +
+      </button>
     </div>
   );
 }
