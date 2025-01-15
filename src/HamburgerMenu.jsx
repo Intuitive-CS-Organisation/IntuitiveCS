@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./HamburgerMenu.css";
-import Logo from "./assets/logo.JPEG";
+import Logo from "./assets/logo.png";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ const HamburgerMenu = () => {
         tabIndex="0"
         aria-label="Toggle menu"
       >
-        <img src={Logo} alt="Menu" />
+        <img src={Logo} alt="Menu" style={{ width: "60px", height: "auto" }} />
       </div>
 
       {/* Overlay */}

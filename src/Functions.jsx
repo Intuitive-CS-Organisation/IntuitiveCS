@@ -13,9 +13,10 @@ import FloatingEdge from "./FloatingEdge";
 import CustomNode from "./CustomNode";
 import CustomConnectionLine from "./CustomConnectionLine";
 
-import { analyzeFunctionTypes } from "./FunctionsLogic";
+import { analyzeFunctionProperties } from "./FunctionsLogic";
 
 import "./index.css";
+import Counter from "./counter";
 
 const edgeTypes = {
   floating: FloatingEdge,
@@ -126,10 +127,72 @@ const initialNodes = [
 const Functions = () => {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState([]);
-  const [functionType, setFunctionType] = useState("Unknown");
+  const [functionProperties, setFunctionProperties] = useState({
+    isFunction: false,
+    isInjective: false,
+    isSurjective: false,
+    isBijective: false,
+  });
   const [connections, setConnections] = useState("{}");
   const [functionName, setFunctionName] = useState("FunctionName");
   const [isEditing, setIsEditing] = useState(false);
+  const [domainCount, setDomainCount] = useState(3);
+  const [codomainCount, setCodomainCount] = useState(3);
+
+  const updateNodes = useCallback(() => {
+    const domainLabels = ["a", "b", "c", "d", "e"];
+    const codomainLabels = ["x", "y", "z", "w", "v"];
+
+    // Generate domain nodes based on domainCount
+    const domainNodes = Array.from({ length: domainCount }, (_, i) => ({
+      id: `A-${i + 1}`,
+      type: "custom",
+      data: { label: domainLabels[i % domainLabels.length] },
+      position: { x: 50, y: i * 100 + 20 },
+      parentId: "A",
+      extent: "parent",
+      selectable: true,
+      draggable: false,
+      className: "group-a-node",
+    }));
+
+    // Generate codomain nodes based on codomainCount
+    const codomainNodes = Array.from({ length: codomainCount }, (_, i) => ({
+      id: `B-${i + 1}`,
+      type: "custom",
+      data: { label: codomainLabels[i % codomainLabels.length] },
+      position: { x: 50, y: i * 100 + 20 },
+      parentId: "B",
+      extent: "parent",
+      selectable: true,
+      draggable: false,
+      className: "group-b-node",
+    }));
+
+    // Update the main nodes
+    setNodes([
+      {
+        id: "A",
+        type: "group",
+        position: { x: 0, y: -domainCount * 20 },
+        data: { label: "Domain" },
+        style: { width: 200, height: domainCount * 100 + 50 },
+      },
+      ...domainNodes,
+      {
+        id: "B",
+        type: "group",
+        position: { x: 350, y: -domainCount * 20 },
+        data: { label: "Codomain" },
+        style: { width: 200, height: codomainCount * 100 + 50 },
+      },
+      ...codomainNodes,
+    ]);
+  }, [domainCount, codomainCount]);
+
+  useEffect(() => {
+    updateNodes();
+  }, [domainCount, codomainCount, updateNodes]);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -182,7 +245,8 @@ const Functions = () => {
   };
 
   useEffect(() => {
-    setFunctionType(analyzeFunctionTypes(nodes, edges));
+    const result = analyzeFunctionProperties(nodes, edges);
+    setFunctionProperties(result);
   }, [nodes, edges]);
 
   const nodeTypes = {
@@ -192,8 +256,20 @@ const Functions = () => {
   return (
     <div id="layout">
       <div id="sidebar">
-        <h3>Function Type:</h3>
-        <p>{functionType}</p>
+        {/* <h3>Adjust Domain and Codomain</h3> */}
+        <div className="counter-section">
+          <p>Domain:</p>
+          <Counter value={domainCount} onChange={setDomainCount} />
+        </div>
+        <div className="counter-section">
+          <p>Codomain:</p>
+          <Counter value={codomainCount} onChange={setCodomainCount} />
+        </div>
+        <h3>Function Properties:</h3>
+        <p>Function: {functionProperties.isFunction ? "✔️" : "❌"}</p>
+        <p>Injective: {functionProperties.isInjective ? "Yes" : "No"}</p>
+        <p>Surjective: {functionProperties.isSurjective ? "Yes" : "No"}</p>
+        <p>Bijective: {functionProperties.isBijective ? "Yes" : "No"}</p>
       </div>
       <div id="main-area">
         <ReactFlow
@@ -206,7 +282,7 @@ const Functions = () => {
           preventScrolling={false}
           fitView
           fitViewOptions={{
-            padding: 0.5,
+            padding: 1,
           }}
           edgeTypes={edgeTypes}
           nodeTypes={nodeTypes}
