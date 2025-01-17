@@ -17,7 +17,29 @@ const teamMembers = [
     name: "Mahin Sindhwani",
     role: "Backend Developer",
     image: MahinImage,
-    bio: "Mahin specializes in server-side logic, database management, and API integrations.",
+    bio: (
+      <>
+        <p>
+          Hi! My name is Mahin, and I love trying new things—whether it’s
+          experimenting with new tech, exploring software, or tackling real-life
+          challenges. I’m passionate about coding, math, and solving problems.
+          Basically, if it’s nerdy, I’m into it.
+        </p>
+        <p>
+          I also love games, and my ultimate career goal is to become a game
+          developer.
+        </p>
+        <p>
+          Contribution: I worked on the main coding for all the elements and
+          features of this website, focusing mainly on implementing React Flow
+          and visualizing the concepts.
+        </p>
+        <p>
+          For any questions, comments, or ideas, feel free to reach out to me at{" "}
+          <a href="mailto:mahin@intuitivecs.ca">mahin@intuitivecs.ca</a>.
+        </p>
+      </>
+    ),
   },
   {
     name: "Shajan Alam",
@@ -32,7 +54,9 @@ const About = () => {
     <div className="about-container">
       <h1>About Us</h1>
       <p>
-        Welcome to Intuitive CS! We are a team of passionate developers dedicated to creating interactive visualizations that make complex computer science concepts easy to understand.
+        Welcome to Intuitive CS! We are a team of passionate developers
+        dedicated to creating interactive visualizations that make complex
+        computer science concepts easy to understand.
       </p>
       <h2>Meet the Team</h2>
       <div className="team-members">
@@ -47,7 +71,10 @@ const About = () => {
       </div>
       <h2>Why We Created This Website</h2>
       <p>
-        Our mission is to provide students and educators with interactive tools that enhance learning and teaching experiences. By visualizing functions, predicates, and relations, we aim to bridge the gap between theoretical concepts and practical understanding.
+        Our mission is to provide students and educators with interactive tools
+        that enhance learning and teaching experiences. By visualizing
+        functions, predicates, and relations, we aim to bridge the gap between
+        theoretical concepts and practical understanding.
       </p>
     </div>
   );
