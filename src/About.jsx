@@ -9,13 +9,13 @@ import ShajanImage from "./assets/shajan.jpg";
 const teamMembers = [
   {
     name: "Parsa Esmkhani",
-    role: "Frontend Developer",
+    role: "The Theory Guy",
     image: ParsaImage,
     bio: "Parsa is passionate about creating intuitive user interfaces and ensuring seamless user experiences.",
   },
   {
     name: "Mahin Sindhwani",
-    role: "Backend Developer",
+    role: "The Coding Guy",
     image: MahinImage,
     bio: (
       <>
@@ -43,7 +43,7 @@ const teamMembers = [
   },
   {
     name: "Shajan Alam",
-    role: "Full Stack Developer",
+    role: "The Content Guy",
     image: ShajanImage,
     bio: (
       <>
