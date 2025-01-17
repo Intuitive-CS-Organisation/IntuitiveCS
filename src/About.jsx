@@ -11,7 +11,29 @@ const teamMembers = [
     name: "Parsa Esmkhani",
     role: "The Theory Guy",
     image: ParsaImage,
-    bio: "Parsa is passionate about creating intuitive user interfaces and ensuring seamless user experiences.",
+    bio: (
+      <>
+        <p>
+          Hey, my name is Parsa and I’m super passionate about all things
+          theoretical computer science. Stuff like logic, algorithms, complexity
+          theory, AI, game theory, fairness theory, graphs and a bunch of other
+          nerdy stuff that I love learning.
+        </p>
+        <p>
+          Contribution: I worked on the theoretical explanations behind concepts
+          and the math/algorithms required to implement them.
+        </p>
+        <p>
+          Special thanks to Steph McIntyre, Noah Fleming, Antonina Kolokolova,
+          Todd Wareham, and Rylo Ashmore for teaching me much of what I know
+          about theoretical CS.
+        </p>
+        <p>
+          For any questions/comments/ideas, please reach out to me at{" "}
+          <a href="mailto:parsa@intuitivecs.ca">parsa@intuitivecs.ca</a>.
+        </p>
+      </>
+    ),
   },
   {
     name: "Mahin Sindhwani",
@@ -62,7 +84,8 @@ const teamMembers = [
         </p>
         <p>
           For any content-related questions or suggestions, feel free to contact
-          me at<a href="mailto:shajan@intuitivecs.ca">shajan@intuitivecs.ca</a>.
+          me at <a href="mailto:shajan@intuitivecs.ca">shajan@intuitivecs.ca</a>
+          .
         </p>
       </>
     ),
