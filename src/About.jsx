@@ -17,13 +17,55 @@ const teamMembers = [
     name: "Mahin Sindhwani",
     role: "Backend Developer",
     image: MahinImage,
-    bio: "Mahin specializes in server-side logic, database management, and API integrations.",
+    bio: (
+      <>
+        <p>
+          Hi! My name is Mahin, and I love trying new things—whether it’s
+          experimenting with new tech, exploring software, or tackling real-life
+          challenges. I’m passionate about coding, math, and solving problems.
+          Basically, if it’s nerdy, I’m into it.
+        </p>
+        <p>
+          I also love games, and my ultimate career goal is to become a game
+          developer.
+        </p>
+        <p>
+          Contribution: I worked on the main coding for all the elements and
+          features of this website, focusing mainly on implementing React Flow
+          and visualizing the concepts.
+        </p>
+        <p>
+          For any questions, comments, or ideas, feel free to reach out to me at{" "}
+          <a href="mailto:mahin@intuitivecs.ca">mahin@intuitivecs.ca</a>.
+        </p>
+      </>
+    ),
   },
   {
     name: "Shajan Alam",
     role: "Full Stack Developer",
     image: ShajanImage,
-    bio: "Shajan bridges the gap between frontend and backend, ensuring cohesive and efficient application development.",
+    bio: (
+      <>
+        <p>
+          Hello! I’m Shajan, the wordsmith behind our project’s content. I focus
+          on creating clear, engaging, and informative content that effectively
+          communicates our ideas and concepts. My goal is to ensure that our
+          website is not only technically sound but also rich in valuable
+          information for our users.
+        </p>
+        <p>
+          Contribution: I developed and managed the website’s content, ensuring
+          that theoretical concepts explained by Parsa are clearly communicated.
+          I also collaborated with Mahin to integrate content seamlessly with
+          the implemented features.
+        </p>
+        <p>
+          For any content-related questions or suggestions, feel free to contact
+          me at<a href="mailto:shajan@intuitivecs.ca">shajan@intuitivecs.ca</a>.
+        </p>
+      </>
+    ),
   },
 ];
 
@@ -32,7 +74,7 @@ const About = () => {
     <div className="about-container">
       <h1>About Us</h1>
       <p>
-        Welcome to Intuitive CS! We are a team of passionate developers
+        Welcome to Intuitive CS! We are a team of passionate individuals
         dedicated to creating interactive visualizations that make complex
         computer science concepts easy to understand.
       </p>
@@ -40,7 +82,11 @@ const About = () => {
       <div className="team-members">
         {teamMembers.map((member, index) => (
           <div key={index} className="team-member">
-            <img src={member.image} alt={`${member.name}`} />
+            <img
+              src={member.image}
+              alt={`${member.name}`}
+              className="team-member-image"
+            />
             <h3>{member.name}</h3>
             <h4>{member.role}</h4>
             <p>{member.bio}</p>
