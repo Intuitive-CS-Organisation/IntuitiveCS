@@ -17,29 +17,7 @@ const teamMembers = [
     name: "Mahin Sindhwani",
     role: "Backend Developer",
     image: MahinImage,
-    bio: (
-      <>
-        <p>
-          Hi! My name is Mahin, and I love trying new things—whether it’s
-          experimenting with new tech, exploring software, or tackling real-life
-          challenges. I’m passionate about coding, math, and solving problems.
-          Basically, if it’s nerdy, I’m into it.
-        </p>
-        <p>
-          I also love games, and my ultimate career goal is to become a game
-          developer.
-        </p>
-        <p>
-          Contribution: I worked on the main coding for all the elements and
-          features of this website, focusing mainly on implementing React Flow
-          and visualizing the concepts.
-        </p>
-        <p>
-          For any questions, comments, or ideas, feel free to reach out to me at{" "}
-          <a href="mailto:mahin@intuitivecs.ca">mahin@intuitivecs.ca</a>.
-        </p>
-      </>
-    ),
+    bio: "Mahin specializes in server-side logic, database management, and API integrations.",
   },
   {
     name: "Shajan Alam",
