@@ -126,7 +126,43 @@ const initialNodes = [
 
 const Functions = () => {
   const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState([]);
+  const [edges, setEdges] = useState([
+    {
+      id: "e1",
+      source: "A-1",
+      target: "B-2",
+      type: "floating",
+      style: { stroke: "#293a42", strokeWidth: 3 },
+    },
+    {
+      id: "e2",
+      source: "A-2",
+      target: "B-1",
+      type: "floating",
+      style: { stroke: "#293a42", strokeWidth: 3 },
+    },
+    {
+      id: "e3",
+      source: "A-3",
+      target: "B-3",
+      type: "floating",
+      style: { stroke: "#293a42", strokeWidth: 3 },
+    },
+    {
+      id: "e4",
+      source: "A-4",
+      target: "B-1",
+      type: "floating",
+      style: { stroke: "#293a42", strokeWidth: 3 },
+    },
+    {
+      id: "e5",
+      source: "A-5",
+      target: "B-2",
+      type: "floating",
+      style: { stroke: "#293a42", strokeWidth: 3 },
+    },
+  ]);
   const [functionProperties, setFunctionProperties] = useState({
     isFunction: false,
     isInjective: false,
@@ -134,14 +170,14 @@ const Functions = () => {
     isBijective: false,
   });
   const [connections, setConnections] = useState("{}");
-  const [functionName, setFunctionName] = useState("FunctionName");
+  const [functionName, setFunctionName] = useState("Squared");
   const [isEditing, setIsEditing] = useState(false);
-  const [domainCount, setDomainCount] = useState(3);
-  const [codomainCount, setCodomainCount] = useState(3);
+  const [domainCount, setDomainCount] = useState(5);
+  const [codomainCount, setCodomainCount] = useState(5);
 
   const updateNodes = useCallback(() => {
-    const domainLabels = ["a", "b", "c", "d", "e"];
-    const codomainLabels = ["x", "y", "z", "w", "v"];
+    const domainLabels = ["-1", "2", "0", "-2", "1"];
+    const codomainLabels = ["4", "1", "0", "2", "-1"];
 
     // Generate domain nodes based on domainCount
     const domainNodes = Array.from({ length: domainCount }, (_, i) => ({
@@ -174,7 +210,7 @@ const Functions = () => {
       {
         id: "A",
         type: "group",
-        position: { x: 0, y: -domainCount * 20 },
+        position: { x: 0, y: -domainCount * 25 },
         data: { label: "Domain" },
         style: { width: 200, height: domainCount * 100 + 50 },
       },
@@ -182,7 +218,7 @@ const Functions = () => {
       {
         id: "B",
         type: "group",
-        position: { x: 350, y: -domainCount * 20 },
+        position: { x: 350, y: -codomainCount * 25 },
         data: { label: "Codomain" },
         style: { width: 200, height: codomainCount * 100 + 50 },
       },

@@ -47,12 +47,12 @@ const defaultEdgeOptions = {
 };
 
 const App = () => {
-  const [nodeCount, setNodeCount] = useState(3);
+  const [nodeCount, setNodeCount] = useState(5);
   const [relations, setRelations] = useState({});
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [connections, setConnections] = useState("{}");
-  const [relationName, setRelationName] = useState("hasBeenTaughtBy");
+  const [relationName, setRelationName] = useState("HasBeenTaughtBy");
   const [isEditing, setIsEditing] = useState(false);
 
   const nodeTypes = {
