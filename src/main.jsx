@@ -9,6 +9,7 @@ import HamburgerMenu from "./HamburgerMenu.jsx";
 import FPR from "./FPRpage.jsx";
 import Contact from "./Contact.jsx"; // <--- import the new file
 import About from "./About.jsx"; // Import the About component
+import GraphPage from "./GraphPage.jsx";
 
 function Main() {
   return (
@@ -17,6 +18,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/FPRpage" element={<FPR />} />
+        <Route path="/GraphPage" element={<GraphPage />} />
         {/* <Route path="/app" element={<App />} />
         <Route path="/functions" element={<Functions />} /> */}
         {/* The new contact route */}

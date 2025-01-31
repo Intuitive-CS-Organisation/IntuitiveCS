@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
+import logo from "./assets/logo.png";
 
 const Home = () => {
   return (
     <>
       <div id="home-container">
-        <h1>Intuitive CS</h1>
+        <img src={logo} alt="Intuitive CS Logo" id="home-logo" />
         <p>
           Hello World! This website is made to interactively visualise and grasp
           the intuition behind key computer science concepts.
@@ -20,10 +22,14 @@ const Home = () => {
             <p>
               <Link to="/FPRpage">Functions, Predicates and Relations</Link>
             </p>
+            <p>
+              <Link to="/GraphPage">Graphs</Link>
+            </p>
             <p>More coming.....</p>
           </span>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
