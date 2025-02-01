@@ -6,7 +6,7 @@ function Footer() {
     <section className="footer">
       <hr className="footer-seperator" />
       <section>
-        <a href="#/contact">Contact Us</a> | <a href="#/about">About</a>
+        <a href="#/contact">Contact Us</a> | <a href="#/about">Meet The Team</a>
       </section>
       <section className="footer-links">
         <a

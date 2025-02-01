@@ -56,7 +56,7 @@ const HamburgerMenu = () => {
           </li>
           <li>
             <Link to="/FPRpage" onClick={toggleMenu}>
-              Functions, Predicates and Realtions
+              Functions, Predicates and Relations
             </Link>
           </li>
         </ul>

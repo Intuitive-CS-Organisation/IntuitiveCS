@@ -89,7 +89,7 @@ const teamMembers = [
 const About = () => {
   return (
     <div className="about-container">
-      <h1>About Us</h1>
+      <h1>Meet The Team</h1>
       <div className="team-members">
         {teamMembers.map((member, index) => (
           <div key={index} className="team-member">
@@ -111,14 +111,6 @@ const About = () => {
           </div>
         ))}
       </div>
-
-      <h2>Why We Created This Website</h2>
-      <p>
-        Our mission is to provide students and educators with interactive tools
-        that enhance learning and teaching experiences. By visualizing
-        functions, predicates, and relations, we aim to bridge the gap between
-        theoretical concepts and practical understanding.
-      </p>
     </div>
   );
 };
