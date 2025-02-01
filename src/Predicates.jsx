@@ -249,7 +249,7 @@ const Predicates = () => {
               />
             ) : (
               <span onDoubleClick={handleDoubleClick}>
-                <center>{predicateName}=</center>
+                <center>{predicateName} =</center>
               </span>
             )}
           </h3>

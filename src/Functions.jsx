@@ -342,7 +342,7 @@ const Functions = () => {
               />
             ) : (
               <span onDoubleClick={handleDoubleClick}>
-                <center>{functionName}=</center>
+                <center>{functionName} =</center>
               </span>
             )}
           </h3>

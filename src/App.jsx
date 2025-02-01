@@ -228,7 +228,7 @@ const App = () => {
               />
             ) : (
               <span onDoubleClick={handleDoubleClick}>
-                <center>{relationName}=</center>
+                <center>{relationName} =</center>
               </span>
             )}
           </h3>
