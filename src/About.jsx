@@ -75,7 +75,7 @@ const teamMembers = [
           that Parsa’s theoretical concepts are clearly communicated. I also collaborated with Mahin, using React and React Flow to visualize key concepts interactively.
         </p>
         <p>
-        Special thanks to Steph McIntyre and Xianta Jiang for helping me build a strong foundation, enabling me to contribute to this project.
+        Special thanks to Steph McIntyre and Xianta Jiang for helping me build a strong foundation on Logic and DSA, enabling me to contribute to this project.
         </p>
         <p>
           For any content-related questions or suggestions, feel free to contact
