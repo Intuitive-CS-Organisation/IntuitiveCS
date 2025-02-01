@@ -14,7 +14,7 @@ function GraphPage() {
           textAlign: "center",
         }}
       >
-        coming soon...!
+        Under development!
       </section>
     </>
   );
