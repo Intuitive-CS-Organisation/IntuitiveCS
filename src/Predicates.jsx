@@ -77,6 +77,13 @@ const Predicates = () => {
       type: "floating",
       style: { stroke: "#293a42", strokeWidth: 3 },
     },
+    {
+      id: "e6",
+      source: "A-6",
+      target: "B-2",
+      type: "floating",
+      style: { stroke: "#293a42", strokeWidth: 3 },
+    },
   ]);
   const [connections, setConnections] = useState("{}");
   const [predicateName, setPredicateName] = useState("IsStudent");
@@ -84,7 +91,14 @@ const Predicates = () => {
   const [domainCount, setDomainCount] = useState(5);
 
   const updateNodes = useCallback(() => {
-    const domainLabels = ["Parsa", "Mahin", "Shajan", "Steph", "Antonina"];
+    const domainLabels = [
+      "Parsa",
+      "Mahin",
+      "Shajan",
+      "Steph",
+      "Antonina",
+      "Noah",
+    ];
     const codomainLabels = ["True", "False"];
 
     // Generate domain nodes based on domainCount
@@ -118,7 +132,7 @@ const Predicates = () => {
       {
         id: "A",
         type: "group",
-        position: { x: 0, y: -domainCount * 25 },
+        position: { x: 0, y: -domainCount * 30 },
         data: { label: "Domain" },
         style: { width: 200, height: domainCount * 100 + 50 },
       },
@@ -213,7 +227,7 @@ const Predicates = () => {
           preventScrolling={false}
           fitView
           fitViewOptions={{
-            padding: 0.2,
+            padding: 0.3,
           }}
           edgeTypes={edgeTypes}
           nodeTypes={nodeTypes}
@@ -235,7 +249,7 @@ const Predicates = () => {
               />
             ) : (
               <span onDoubleClick={handleDoubleClick}>
-                <center>{predicateName}</center>
+                <center>{predicateName}=</center>
               </span>
             )}
           </h3>

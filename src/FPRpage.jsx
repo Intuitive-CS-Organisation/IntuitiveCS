@@ -17,10 +17,7 @@ const FPR = () => {
       <div className="section">
         <h3>
           <center>
-            <Dropdown
-              title="Functions"
-              content="A function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output."
-            />
+            <Dropdown title="Functions" content="" />
           </center>
         </h3>
         <div className="visualization">
@@ -30,10 +27,7 @@ const FPR = () => {
       <div className="section">
         <h3>
           <center>
-            <Dropdown
-              title="Predicates"
-              content="A function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output."
-            />
+            <Dropdown title="Predicates" content="" />
           </center>
         </h3>
         <div className="visualization">
@@ -43,10 +37,7 @@ const FPR = () => {
       <div className="section">
         <h3>
           <center>
-            <Dropdown
-              title="Relations"
-              content="A function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output."
-            />
+            <Dropdown title="Relations" content="" />
           </center>
         </h3>
         <div className="visualization">

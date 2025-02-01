@@ -96,11 +96,11 @@ const About = () => {
   return (
     <div className="about-container">
       <h1>About Us</h1>
-      <p>
+      {/* <p>
         Welcome to Intuitive CS! We are a team of passionate individuals
         dedicated to creating interactive visualizations that make complex
         computer science concepts easy to understand.
-      </p>
+      </p> */}
       <h2>Meet the Team</h2>
       <div className="team-members">
         {teamMembers.map((member, index) => (
@@ -116,13 +116,13 @@ const About = () => {
           </div>
         ))}
       </div>
-      <h2>Why We Created This Website</h2>
+      {/* <h2>Why We Created This Website</h2>
       <p>
         Our mission is to provide students and educators with interactive tools
         that enhance learning and teaching experiences. By visualizing
         functions, predicates, and relations, we aim to bridge the gap between
         theoretical concepts and practical understanding.
-      </p>
+      </p> */}
     </div>
   );
 };

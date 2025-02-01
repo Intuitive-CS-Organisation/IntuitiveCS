@@ -176,8 +176,8 @@ const Functions = () => {
   const [codomainCount, setCodomainCount] = useState(5);
 
   const updateNodes = useCallback(() => {
-    const domainLabels = ["-1", "2", "0", "-2", "1"];
-    const codomainLabels = ["4", "1", "0", "2", "-1"];
+    const domainLabels = ["-1", "2", "0", "-2", "1", "3"];
+    const codomainLabels = ["4", "1", "0", "2", "-1", "9"];
 
     // Generate domain nodes based on domainCount
     const domainNodes = Array.from({ length: domainCount }, (_, i) => ({
@@ -304,9 +304,9 @@ const Functions = () => {
         <div id="node-info">
           <h3>Function Properties:</h3>
           <p>Function: {functionProperties.isFunction ? "✔️" : "❌"}</p>
-          <p>Injective: {functionProperties.isInjective ? "Yes" : "No"}</p>
-          <p>Surjective: {functionProperties.isSurjective ? "Yes" : "No"}</p>
-          <p>Bijective: {functionProperties.isBijective ? "Yes" : "No"}</p>
+          <p>Injective: {functionProperties.isInjective ? "✔️" : "❌"}</p>
+          <p>Surjective: {functionProperties.isSurjective ? "✔️" : "❌"}</p>
+          <p>Bijective: {functionProperties.isBijective ? "✔️" : "❌"}</p>
         </div>
       </div>
       <div id="main-area">
@@ -342,7 +342,7 @@ const Functions = () => {
               />
             ) : (
               <span onDoubleClick={handleDoubleClick}>
-                <center>{functionName}</center>
+                <center>{functionName}=</center>
               </span>
             )}
           </h3>

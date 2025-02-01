@@ -47,7 +47,7 @@ const defaultEdgeOptions = {
 };
 
 const App = () => {
-  const [nodeCount, setNodeCount] = useState(5);
+  const [nodeCount, setNodeCount] = useState(6);
   const [relations, setRelations] = useState({});
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -79,7 +79,14 @@ const App = () => {
       return positions;
     };
 
-    const nodeLabels = ["Parsa", "Mahin", "Shajan", "Steph", "Antonina"];
+    const nodeLabels = [
+      "Parsa",
+      "Mahin",
+      "Shajan",
+      "Steph",
+      "Antonina",
+      "Noah",
+    ];
 
     const newNodes = Array.from({ length: nodeCount }, (_, i) => {
       const positions = calculatePositions(nodeCount);
@@ -105,6 +112,13 @@ const App = () => {
         { id: "e1-5", source: "1", target: "5", type: "floating" },
         { id: "e5-5", source: "5", target: "5", type: "selfLoop" },
         { id: "e4-4", source: "4", target: "4", type: "selfLoop" }
+      );
+    }
+    if (nodeCount >= 6) {
+      newEdges.push(
+        { id: "e6-5", source: "6", target: "5", type: "floating" },
+        { id: "e1-6", source: "1", target: "6", type: "floating" },
+        { id: "e6-6", source: "6", target: "6", type: "selfLoop" }
       );
     }
     setEdges(newEdges);
@@ -169,14 +183,14 @@ const App = () => {
         </div>
         <div id="node-info">
           <h3>Relation Properties:</h3>
-          <p>Reflexive: {relations.reflexive ? "Yes" : "No"}</p>
-          <p>Anti-Reflexive: {relations.antiReflexive ? "Yes" : "No"}</p>
-          <p>Symmetric: {relations.symmetric ? "Yes" : "No"}</p>
-          <p>Anti-Symmetric: {relations.antiSymmetric ? "Yes" : "No"}</p>
-          <p>Transitive: {relations.transitive ? "Yes" : "No"}</p>
-          <p>Equivalence Relation: {relations.equivalent ? "Yes" : "No"}</p>
-          <p>Partial Order Relation: {relations.partial ? "Yes" : "No"}</p>
-          <p>Total Order Relation: {relations.total ? "Yes" : "No"}</p>
+          <p>Reflexive: {relations.reflexive ? "✔️" : "❌"}</p>
+          <p>Anti-Reflexive: {relations.antiReflexive ? "✔️" : "❌"}</p>
+          <p>Symmetric: {relations.symmetric ? "✔️" : "❌"}</p>
+          <p>Anti-Symmetric: {relations.antiSymmetric ? "✔️" : "❌"}</p>
+          <p>Transitive: {relations.transitive ? "✔️" : "❌"}</p>
+          <p>Equivalence Relation: {relations.equivalent ? "✔️" : "❌"}</p>
+          <p>Partial Order Relation: {relations.partial ? "✔️" : "❌"}</p>
+          <p>Total Order Relation: {relations.total ? "✔️" : "❌"}</p>
         </div>
       </div>
 
@@ -192,7 +206,7 @@ const App = () => {
           preventScrolling={false}
           fitView
           fitViewOptions={{
-            padding: 0.3, // Adjust padding to control zoom level
+            padding: 0.4, // Adjust padding to control zoom level
           }}
           nodeTypes={nodeTypes}
           edgeTypes={edgeTypes}
@@ -214,7 +228,7 @@ const App = () => {
               />
             ) : (
               <span onDoubleClick={handleDoubleClick}>
-                <center>{relationName}</center>
+                <center>{relationName}=</center>
               </span>
             )}
           </h3>

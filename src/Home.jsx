@@ -18,15 +18,11 @@ const Home = () => {
         </p>
         <div>
           <h3>Topics:</h3>
-          <span id="home-links">
-            <p>
-              <Link to="/FPRpage">Functions, Predicates and Relations</Link>
-            </p>
-            <p>
-              <Link to="/GraphPage">Graphs</Link>
-            </p>
-            <p>More coming.....</p>
-          </span>
+          <div id="home-links">
+            <Link to="/FPRpage">Functions, Predicates and Relations</Link>
+            <Link to="/GraphPage">Graphs</Link>
+            More coming.....
+          </div>
         </div>
       </div>
       <Footer />
