@@ -85,8 +85,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 50px;
+  width: auto;
+  height: auto;
   padding: 10px;
   font-size: 18px;
   color: #007bff;
@@ -95,8 +95,8 @@ html, body {
   border-radius: 5px;
   text-align: center;
   box-sizing: border-box;
-  word-wrap: break-word; /* Prevents overflow */
-  white-space: normal; /* Allows text wrapping */
+  /* word-wrap: break-word; /* Prevents overflow */
+  /* white-space: normal; Allows text wrapping */ 
 }
 
 #home-links a:hover {
