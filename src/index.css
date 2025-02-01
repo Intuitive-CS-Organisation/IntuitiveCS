@@ -95,6 +95,8 @@ html, body {
   border-radius: 5px;
   text-align: center;
   box-sizing: border-box;
+  word-wrap: break-word; /* Prevents overflow */
+  white-space: normal; /* Allows text wrapping */
 }
 
 #home-links a:hover {
