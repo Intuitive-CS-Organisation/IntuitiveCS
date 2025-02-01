@@ -11,9 +11,9 @@ const FPR = () => {
       <h1>
         <center>Functions/Predicates/Relations</center>
       </h1>
-      <p>
+      {/* <p>
         <center>{textContent}</center>
-      </p>
+      </p> */}
       <div className="section">
         <h3>
           <center>
