@@ -9,7 +9,7 @@ const FPR = () => {
   return (
     <div id>
       <h1>
-        <center>Functions/Predicates/Relations</center>
+        <center>Functions, Predicates, and Relations</center>
       </h1>
       {/* <p>
         <center>{textContent}</center>

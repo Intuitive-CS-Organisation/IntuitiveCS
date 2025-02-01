@@ -19,7 +19,7 @@ const Home = () => {
         <div>
           <h3>Topics:</h3>
           <div id="home-links">
-            <Link to="/FPRpage">Functions, Predicates and Relations</Link>
+            <Link to="/FPRpage">Functions, Predicates, and Relations</Link>
             <Link to="/GraphPage">Graphs</Link>
             Exciting additions ahead!
           </div>
