@@ -44,7 +44,7 @@ const teamMembers = [
           Hi! My name is Mahin, and I love trying new things—whether it’s
           experimenting with new tech, exploring software, or tackling real-life
           challenges. I’m passionate about coding, math, and solving problems.
-          Basically, if it’s nerdy, I’m into it.I also love games, and my
+          Basically, if it’s nerdy, I’m into it. I also love games, and my
           ultimate career goal is to become a game developer.
         </p>
         <p>
