@@ -13,7 +13,7 @@ const Home = () => {
           the intuition behind key computer science concepts.
         </p>
         <p>
-          We hope students learn and teachers teach more effectively with these
+          We hope students learn and teachers teach more effectively with this
           resource!
         </p>
         <div>

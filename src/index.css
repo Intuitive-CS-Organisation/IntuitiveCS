@@ -562,3 +562,15 @@ html, body {
   text-transform: uppercase;
   color: black; /* Differentiated color for node info headings */
 }
+
+
+
+/* css for the hovering text */
+#node-info .hovering-text {
+  z-index: 1001;
+  display: block;
+  padding: 20px;
+  text-wrap: wrap;
+  max-width: 500px;
+  /* border-radius: 0%; */
+}

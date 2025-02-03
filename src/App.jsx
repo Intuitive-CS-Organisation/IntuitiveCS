@@ -15,6 +15,9 @@ import FloatingEdge from "./FloatingEdge";
 import CustomConnectionLine from "./CustomConnectionLine";
 import SelfConnectingEdge from "./SelfConnectingEdge";
 
+import { Tooltip } from "react-tooltip";
+import Latex from "react-latex-next";
+
 import Counter from "./counter";
 import {
   isReflexive,
@@ -183,14 +186,226 @@ const App = () => {
         </div>
         <div id="node-info">
           <h3>Relation Properties:</h3>
-          <p>Reflexive: {relations.reflexive ? "✔️" : "❌"}</p>
-          <p>Anti-Reflexive: {relations.antiReflexive ? "✔️" : "❌"}</p>
-          <p>Symmetric: {relations.symmetric ? "✔️" : "❌"}</p>
-          <p>Anti-Symmetric: {relations.antiSymmetric ? "✔️" : "❌"}</p>
-          <p>Transitive: {relations.transitive ? "✔️" : "❌"}</p>
-          <p>Equivalence Relation: {relations.equivalent ? "✔️" : "❌"}</p>
-          <p>Partial Order Relation: {relations.partial ? "✔️" : "❌"}</p>
-          <p>Total Order Relation: {relations.total ? "✔️" : "❌"}</p>
+          <p>
+            <a className="reflexive">
+              Reflexive: {relations.reflexive?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".reflexive"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Reflexive states that all nodes point to themselves, formally:
+                <center>
+                  <Latex>$\forall x, xRx$</Latex>
+                </center>
+                <br />
+                {relations.reflexive?.result ? (
+                  <span>
+                    This relation is reflexive as all nodes point to themselves.
+                  </span>
+                ) : (
+                  <span> {relations.reflexive?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="anti-reflexive">
+              Anti-Reflexive: {relations.antiReflexive?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".anti-reflexive"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Anti-Reflexive states that no nodes point to themselves,
+                formally:
+                <center>
+                  <Latex>$\forall x, \neg xRx$</Latex>
+                </center>
+                <br />
+                {relations.antiReflexive?.result ? (
+                  <span>
+                    This relation is Anti-reflexive as all nodes do not point to
+                    themselves.
+                  </span>
+                ) : (
+                  <span> {relations.antiReflexive?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="symmetric">
+              Symmetric: {relations.symmetric?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".symmetric"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Symmetric states that for all nodes, if a node points to
+                another, the other must point back, formally:
+                <center>
+                  <Latex>$\forall x, \forall y,(xRy \implies yRx)$</Latex>
+                </center>
+                <br />
+                {relations.symmetric?.result ? (
+                  <span>
+                    This relation is symmetric as all pairs of nodes either do
+                    not point to each other, or they both point to each other.
+                  </span>
+                ) : (
+                  <span> {relations.symmetric?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="anti-symmetric">
+              Anti-Symmetric: {relations.antiSymmetric?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".anti-symmetric"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Anti-symmetric states that for all nodes, two different nodes do
+                not both point to each other, formally:
+                <center>
+                  <Latex>
+                    $\forall x, \forall y, (xRy \wedge yRx \implies x = y)$
+                  </Latex>
+                </center>
+                <br />
+                {relations.antiSymmetric?.result ? (
+                  <span>
+                    This relation is Anti-Symmetric, as no two distinct nodes
+                    both point to each other.
+                  </span>
+                ) : (
+                  <span>{relations.antiSymmetric?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="transitive">
+              Transitive: {relations.transitive?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".transitive"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Transitive states that for all nodes, if between any three nodes
+                say a, b, and c, there is an edge from a to b and b to c, there
+                must exist an edge from a to c. formally:
+                <center>
+                  <Latex>
+                    $\forall x, \forall y, \forall z, ((xRy \wedge yRz) \implies
+                    xRz)$
+                  </Latex>
+                </center>
+                <br />
+                {relations.transitive?.result ? (
+                  <span>
+                    This relation is Transitive, as all trio of nodes satisfy
+                    the condition above.
+                  </span>
+                ) : (
+                  <span> {relations.transitive?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="equivalent">
+              Equivalence Relation: {relations.equivalent?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".equivalent"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Equivalence relation states that the relation is Reflexive,
+                Symmetric and Transitive.
+                <br />
+                {relations.equivalent?.result ? (
+                  <span>
+                    This relation is equivalent as it satisfies all of the three
+                    conditions.
+                  </span>
+                ) : (
+                  <span> {relations.equivalent?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="partial">
+              Partial Order Relation: {relations.partial?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".partial"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Partial order relation states that the relation is Reflexive,
+                Anti-symmetric and Transitive.
+                <br />
+                {relations.partial?.result ? (
+                  <span>
+                    This relation is partial order as it satisfies all of the
+                    three conditions.
+                  </span>
+                ) : (
+                  <span> {relations.partial?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="total">
+              Total Order Relation: {relations.total?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".total"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Total order relation states that the relation is a partial order
+                relation and it satisfies totality. Totality means that for all
+                two nodes, at least one points to the other. Formally:
+                <center>
+                  <Latex>$\forall x \forall y , (x R y \lor y R x)$</Latex>
+                </center>
+                <br />
+                {relations.total?.result ? (
+                  <span>This relation satisfies both conditions</span>
+                ) : (
+                  <span> {relations.total?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
         </div>
       </div>
 

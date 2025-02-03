@@ -16,7 +16,10 @@ import CustomConnectionLine from "./CustomConnectionLine";
 import { analyzeFunctionProperties } from "./FunctionsLogic";
 
 import "./index.css";
+import Latex from "react-latex-next";
 import Counter from "./counter";
+
+import { Tooltip } from "react-tooltip";
 
 const edgeTypes = {
   floating: FloatingEdge,
@@ -164,10 +167,10 @@ const Functions = () => {
     },
   ]);
   const [functionProperties, setFunctionProperties] = useState({
-    isFunction: false,
-    isInjective: false,
-    isSurjective: false,
-    isBijective: false,
+    isFunction: { result: false, counterexample: null },
+    isInjective: { result: false, counterexample: null },
+    isSurjective: { result: false, counterexample: null },
+    isBijective: { result: false, counterexample: null },
   });
   const [connections, setConnections] = useState("{}");
   const [functionName, setFunctionName] = useState("Squared");
@@ -303,10 +306,146 @@ const Functions = () => {
         </div>
         <div id="node-info">
           <h3>Function Properties:</h3>
-          <p>Function: {functionProperties.isFunction ? "✔️" : "❌"}</p>
-          <p>Injective: {functionProperties.isInjective ? "✔️" : "❌"}</p>
-          <p>Surjective: {functionProperties.isSurjective ? "✔️" : "❌"}</p>
-          <p>Bijective: {functionProperties.isBijective ? "✔️" : "❌"}</p>
+          <p>
+            <a className="function">
+              Function: {functionProperties.isFunction?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".function"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                A function is a mapping from some domain D to some Co-Domain C
+                such that:
+                <center>
+                  <Latex>
+                    1.{" "}
+                    {
+                      "$\\forall x \\in D, \\; \\exists y \\in C \\text{ such that } f(x) = y$"
+                    }
+                  </Latex>
+                  <span>
+                    , (An input in its domain will always return an output.)
+                  </span>
+                </center>
+                <center>
+                  <Latex>
+                    2.{" "}
+                    {
+                      "$\\forall x \\in D, \\; \\neg \\Bigl( \\exists y, z \\in C \\text{ such that } f(x) = y \\wedge f(x) = z \\wedge y \\neq z \\Bigr)$"
+                    }
+                  </Latex>
+                  <span>
+                    , (For any given input in the domain, no more than 1 output
+                    is returned.)
+                  </span>
+                </center>
+                <br />
+                {functionProperties.isFunction?.result ? (
+                  <span>
+                    The is a function as it satisfies both of the conditions
+                    above.
+                  </span>
+                ) : (
+                  <span> {functionProperties.isFunction?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="injective">
+              Injective: {functionProperties.isInjective?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".injective"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Injective states that two different inputs do not map to the
+                same output. Formally, if D is the Domain:
+                <center>
+                  <Latex>
+                    $\forall a \in D, \forall b \in D, a \neq b \implies f(a)
+                    \neq f(b)$
+                  </Latex>
+                </center>
+                <br />
+                {functionProperties.isInjective?.result ? (
+                  <span>
+                    This function is injective as the condition is satisfied.
+                  </span>
+                ) : (
+                  <span>
+                    This relation is not injective as{" "}
+                    {functionProperties.isInjective?.counterexample}.
+                  </span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="surjective">
+              Surjective:{" "}
+              {functionProperties.isSurjective?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".surjective"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Surjective states that every element in the Co-Domain (Denoted
+                C) is mapped to by at least one element in the Domain (Denoted
+                D). Formally:
+                <center>
+                  <Latex>
+                    $\forall a \in D, \forall b \in D, a \neq b \implies f(a)
+                    \neq f(b)$
+                  </Latex>
+                </center>
+                <br />
+                {functionProperties.isSurjective?.result ? (
+                  <span>
+                    This function is surjective as the condition is satisfied.
+                  </span>
+                ) : (
+                  <span>
+                    This relation is not surjective as{" "}
+                    {functionProperties.isSurjective?.counterexample}
+                  </span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
+          <p>
+            <a className="bijective">
+              Bijective: {functionProperties.isBijective?.result ? "✔️" : "❌"}
+            </a>
+            <Tooltip
+              className="hovering-text"
+              anchorSelect=".bijective"
+              offset={40}
+              place="right"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                Bijective states that the function is surjective and injective.
+                <br />
+                {functionProperties.isBijective?.result ? (
+                  <span>
+                    This function is bijective as it is both surjective and
+                    injective.
+                  </span>
+                ) : (
+                  <span> {functionProperties.isBijective?.counterexample}</span>
+                )}
+              </div>
+            </Tooltip>
+          </p>
         </div>
       </div>
       <div id="main-area">
