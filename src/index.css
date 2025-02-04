@@ -572,5 +572,6 @@ html, body {
   padding: 20px;
   text-wrap: wrap;
   max-width: 500px;
+  font-weight: normal;
   /* border-radius: 0%; */
 }

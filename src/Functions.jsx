@@ -356,7 +356,8 @@ const Functions = () => {
           </p>
           <p>
             <a className="injective">
-              Injective: {functionProperties.isInjective?.result ? "✔️" : "❌"}
+              Injective (One to One):{" "}
+              {functionProperties.isInjective?.result ? "✔️" : "❌"}
             </a>
             <Tooltip
               className="hovering-text"
@@ -389,7 +390,7 @@ const Functions = () => {
           </p>
           <p>
             <a className="surjective">
-              Surjective:{" "}
+              Surjective (Onto):{" "}
               {functionProperties.isSurjective?.result ? "✔️" : "❌"}
             </a>
             <Tooltip
@@ -404,8 +405,9 @@ const Functions = () => {
                 D). Formally:
                 <center>
                   <Latex>
-                    $\forall a \in D, \forall b \in D, a \neq b \implies f(a)
-                    \neq f(b)$
+                    {
+                      "$\\forall b \\in C, \\exists a \\in D \\text{ such that } f(a) = b$"
+                    }
                   </Latex>
                 </center>
                 <br />
