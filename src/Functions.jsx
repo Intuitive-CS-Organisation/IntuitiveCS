@@ -7,6 +7,7 @@ import {
   addEdge,
   Handle,
   MarkerType,
+  useEdgesState,
 } from "@xyflow/react";
 
 import FloatingEdge from "./FloatingEdge";
@@ -129,54 +130,65 @@ const initialNodes = [
 
 const Functions = () => {
   const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState([
-    {
-      id: "e1",
-      source: "A-1",
-      target: "B-2",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e2",
-      source: "A-2",
-      target: "B-1",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e3",
-      source: "A-3",
-      target: "B-3",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e4",
-      source: "A-4",
-      target: "B-1",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e5",
-      source: "A-5",
-      target: "B-2",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-  ]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [connections, setConnections] = useState("{}");
+  const [functionName, setFunctionName] = useState("Squared");
+  const [isEditing, setIsEditing] = useState(false);
+  const [domainCount, setDomainCount] = useState(5);
+  const [codomainCount, setCodomainCount] = useState(5);
+  // const [edges, setEdges] = useState([
+  useEffect(() => {
+    const newEdges = [];
+
+    if (domainCount >= 1 && codomainCount >= 2) {
+      newEdges.push({
+        id: "e1",
+        source: "A-1",
+        target: "B-2",
+        type: "floating",
+      });
+    }
+    if (domainCount >= 2 && codomainCount >= 1) {
+      newEdges.push({
+        id: "e2",
+        source: "A-2",
+        target: "B-1",
+        type: "floating",
+      });
+    }
+    if (domainCount >= 3 && codomainCount >= 3) {
+      newEdges.push({
+        id: "e3",
+        source: "A-3",
+        target: "B-3",
+        type: "floating",
+      });
+    }
+    if (domainCount >= 4 && codomainCount >= 1) {
+      newEdges.push({
+        id: "e4",
+        source: "A-4",
+        target: "B-1",
+        type: "floating",
+      });
+    }
+    if (domainCount >= 5 && codomainCount >= 2) {
+      newEdges.push({
+        id: "e5",
+        source: "A-5",
+        target: "B-2",
+        type: "floating",
+      });
+    }
+
+    setEdges(newEdges);
+  }, [domainCount, codomainCount]);
   const [functionProperties, setFunctionProperties] = useState({
     isFunction: { result: false, counterexample: null },
     isInjective: { result: false, counterexample: null },
     isSurjective: { result: false, counterexample: null },
     isBijective: { result: false, counterexample: null },
   });
-  const [connections, setConnections] = useState("{}");
-  const [functionName, setFunctionName] = useState("Squared");
-  const [isEditing, setIsEditing] = useState(false);
-  const [domainCount, setDomainCount] = useState(5);
-  const [codomainCount, setCodomainCount] = useState(5);
 
   const updateNodes = useCallback(() => {
     const domainLabels = ["-1", "2", "0", "-2", "1", "3"];
@@ -238,10 +250,10 @@ const Functions = () => {
     []
   );
 
-  const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    []
-  );
+  // const onEdgesChange = useCallback(
+  //   (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+  //   []
+  // );
 
   const onConnect = useCallback(
     (connection) =>

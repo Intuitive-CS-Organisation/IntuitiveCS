@@ -4,6 +4,7 @@ import {
   Background,
   applyNodeChanges,
   applyEdgeChanges,
+  useEdgesState,
   addEdge,
   MarkerType,
 } from "@xyflow/react";
@@ -40,55 +41,72 @@ const connectionLineStyle = {
 
 const Predicates = () => {
   const [nodes, setNodes] = useState([]);
-  //   const [edges, setEdges] = useState([]);
-  const [edges, setEdges] = useState([
-    {
-      id: "e1",
-      source: "A-1",
-      target: "B-1",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e2",
-      source: "A-2",
-      target: "B-1",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e3",
-      source: "A-3",
-      target: "B-1",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e4",
-      source: "A-4",
-      target: "B-2",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e5",
-      source: "A-5",
-      target: "B-2",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-    {
-      id: "e6",
-      source: "A-6",
-      target: "B-2",
-      type: "floating",
-      style: { stroke: "#293a42", strokeWidth: 3 },
-    },
-  ]);
   const [connections, setConnections] = useState("{}");
   const [predicateName, setPredicateName] = useState("IsStudent");
   const [isEditing, setIsEditing] = useState(false);
   const [domainCount, setDomainCount] = useState(5);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+  useEffect(() => {
+    const newEdges = [];
+
+    if (domainCount >= 1) {
+      newEdges.push({
+        id: "e1",
+        source: "A-1",
+        target: "B-1",
+        type: "floating",
+        style: { stroke: "#293a42", strokeWidth: 3 },
+      });
+    }
+    if (domainCount >= 2) {
+      newEdges.push({
+        id: "e2",
+        source: "A-2",
+        target: "B-1",
+        type: "floating",
+        style: { stroke: "#293a42", strokeWidth: 3 },
+      });
+    }
+    if (domainCount >= 3) {
+      newEdges.push({
+        id: "e3",
+        source: "A-3",
+        target: "B-1",
+        type: "floating",
+        style: { stroke: "#293a42", strokeWidth: 3 },
+      });
+    }
+    if (domainCount >= 4) {
+      newEdges.push({
+        id: "e4",
+        source: "A-4",
+        target: "B-2",
+        type: "floating",
+        style: { stroke: "#293a42", strokeWidth: 3 },
+      });
+    }
+    if (domainCount >= 5) {
+      newEdges.push({
+        id: "e5",
+        source: "A-5",
+        target: "B-2",
+        type: "floating",
+        style: { stroke: "#293a42", strokeWidth: 3 },
+      });
+    }
+    if (domainCount >= 6) {
+      newEdges.push({
+        id: "e6",
+        source: "A-6",
+        target: "B-2",
+        type: "floating",
+        style: { stroke: "#293a42", strokeWidth: 3 },
+      });
+    }
+
+    setEdges(newEdges);
+  }, [domainCount]);
 
   const updateNodes = useCallback(() => {
     const domainLabels = [
@@ -157,10 +175,10 @@ const Predicates = () => {
     []
   );
 
-  const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    []
-  );
+  // const onEdgesChange = useCallback(
+  //   (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+  //   []
+  // );
 
   const onConnect = useCallback(
     (connection) =>
