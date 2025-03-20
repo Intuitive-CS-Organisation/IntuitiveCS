@@ -199,7 +199,7 @@ const App = () => {
               <div style={{ display: "flex", flexDirection: "column" }}>
                 Reflexive states that all nodes point to themselves, formally:
                 <center>
-                  <Latex>$\forall x, xRx$</Latex>
+                  <Latex>$\forall x xRx$</Latex>
                 </center>
                 <br />
                 {relations.reflexive?.result ? (
@@ -226,7 +226,7 @@ const App = () => {
                 Anti-Reflexive states that no nodes point to themselves,
                 formally:
                 <center>
-                  <Latex>$\forall x, \neg xRx$</Latex>
+                  <Latex>$\forall x \neg xRx$</Latex>
                 </center>
                 <br />
                 {relations.antiReflexive?.result ? (
@@ -254,7 +254,7 @@ const App = () => {
                 Symmetric states that for all nodes, if a node points to
                 another, the other must point back, formally:
                 <center>
-                  <Latex>$\forall x, \forall y,(xRy \implies yRx)$</Latex>
+                  <Latex>$\forall x \forall y(xRy \implies yRx)$</Latex>
                 </center>
                 <br />
                 {relations.symmetric?.result ? (
@@ -283,7 +283,7 @@ const App = () => {
                 not both point to each other, formally:
                 <center>
                   <Latex>
-                    $\forall x, \forall y, (xRy \wedge yRx \implies x = y)$
+                    $\forall x \forall y (xRy \wedge yRx \implies x = y)$
                   </Latex>
                 </center>
                 <br />
@@ -314,7 +314,7 @@ const App = () => {
                 must exist an edge from a to c. formally:
                 <center>
                   <Latex>
-                    $\forall x, \forall y, \forall z, ((xRy \wedge yRz) \implies
+                    $\forall x \forall y \forall z ((xRy \wedge yRz) \implies
                     xRz)$
                   </Latex>
                 </center>
@@ -395,7 +395,7 @@ const App = () => {
                 relation and it satisfies totality. Totality means that for all
                 two nodes, at least one points to the other. Formally:
                 <center>
-                  <Latex>$\forall x \forall y , (x R y \lor y R x)$</Latex>
+                  <Latex>$\forall x \forall y (x R y \lor y R x)$</Latex>
                 </center>
                 <br />
                 {relations.total?.result ? (
