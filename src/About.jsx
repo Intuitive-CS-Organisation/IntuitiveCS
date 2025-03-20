@@ -48,9 +48,10 @@ const teamMembers = [
           ultimate career goal is to become a game developer.
         </p>
         <p>
-          Contribution: I worked on the main coding for all the elements and
-          features of this website, focusing mainly on implementing React Flow
-          and visualizing the concepts.
+          Contribution: I worked on the main coding for the website, translating
+          Parsa's logic and ideas to work seamlessly within the project,
+          focusing mainly on implementing React Flow and handling visualization
+          and dynamic updates of the concept.
         </p>
         <p>
           For any questions, comments, or ideas, feel free to reach out to me at{" "}
@@ -68,14 +69,19 @@ const teamMembers = [
         <p>
           Hello! I’m Shajan, the wordsmith behind our project’s content. I focus
           on creating clear, engaging, and informative material that effectively
-          communicates our ideas and concepts.I am passionate about robotics and intelligent automation!
+          communicates our ideas and concepts.I am passionate about robotics and
+          intelligent automation!
         </p>
         <p>
           Contribution: I developed and managed the website’s content, ensuring
-          that Parsa’s theoretical concepts are clearly communicated. I also collaborated with Mahin, using React and React Flow to visualize key concepts interactively.
+          that Parsa’s theoretical concepts are clearly communicated. I also
+          collaborated with Mahin, using React and React Flow to visualize key
+          concepts interactively.
         </p>
         <p>
-        Special thanks to Steph McIntyre and Xianta Jiang for helping me build a strong foundation on Logic and DSA, enabling me to contribute to this project.
+          Special thanks to Steph McIntyre and Xianta Jiang for helping me build
+          a strong foundation on Logic and DSA, enabling me to contribute to
+          this project.
         </p>
         <p>
           For any content-related questions or suggestions, feel free to contact
