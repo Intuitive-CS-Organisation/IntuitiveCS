@@ -21,6 +21,7 @@ const Home = () => {
           <div id="home-links">
             <Link to="/FPRpage">Functions, Predicates, and Relations</Link>
             <Link to="/GraphPage">Graphs</Link>
+            <Link to="/StacksQueues">Stacks and Queues</Link>
             Exciting additions ahead!
           </div>
         </div>
